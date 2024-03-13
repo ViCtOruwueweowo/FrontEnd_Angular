@@ -1,0 +1,9 @@
+.container{
+    margin: 50px;
+}
+.button{
+    width: 50%;
+    padding: 3px 0px;
+    text-align: center;
+    border: none;
+}

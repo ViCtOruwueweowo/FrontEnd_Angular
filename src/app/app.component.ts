@@ -4,6 +4,8 @@ import { IndexComponent } from './index/index.component';
 import { FormRegistroAppComponent } from './form-registro-app/form-registro-app.component';
 import { FormLoginAppComponent } from './form-login-app/form-login-app.component';
 
+
+
 @Component({
   selector: 'app-root',
   standalone: true,

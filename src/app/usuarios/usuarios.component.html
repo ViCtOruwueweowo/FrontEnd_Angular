@@ -1,0 +1,25 @@
+<div class="container">
+    <table class="table table-dark text-center">
+        <thead>
+          <tr>
+            <th scope="col"> ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Email</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+      @for (item of usersList;track $index){
+        <tr>
+            <th scope="row">{{item.id}}</th>
+            <td>{{item.name}}</td>
+            <td>{{item.email}}</td>
+            <td>
+                <button class="btn btn-warning">Modificar</button>
+                <button class="btn btn-danger">Eliminar</button>
+            </td>
+          </tr>
+      }
+        </tbody>
+      </table>
+</div>
