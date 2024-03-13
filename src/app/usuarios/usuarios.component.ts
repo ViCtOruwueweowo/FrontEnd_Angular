@@ -20,7 +20,7 @@ export class UsuariosComponent implements OnInit {
   getUser() {
     this.usersService.getUser().subscribe({
       next: (result) => {
-        this.usersList = result;
+        this.usersList = result[0];
       },
       error: (err) => {
         console.log(err);

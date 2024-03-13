@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="d-grid gap-2">
+        <button class="btn btn-success " type="button">Agregar</button>
+      </div>
+    <table class="table table-hover text-center">
+        <thead>
+          <tr>
+            <th scope="col"> ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">contacto</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+     
+          @for (item of providersList;track $index){
+            <tr>
+                <th scope="row">{{item.id}}</th>
+                <td>{{item.nombre}}</td>
+                <td>{{item.direccion}}</td>
+                <td>{{item.contacto}}</td>
+     
+                <td>
+             
+                    <button class="btn btn-warning button">Modificar</button>
+                    <button class="btn btn-danger button">Eliminar</button>
+                </td>
+              </tr>
+          }
+          
+        </tbody>
+      </table>
+</div>
