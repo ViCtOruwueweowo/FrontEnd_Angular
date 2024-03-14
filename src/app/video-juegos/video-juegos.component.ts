@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Games } from '../core/interfaces/games';
 import { GamesService } from '../core/services/games.service';
+import { FormRegistroJuegosComponent } from '../form-registro-juegos/form-registro-juegos.component';
+import { RouterLink } from '@angular/router';
+import { IndexComponent } from '../index/index.component';
 @Component({
   selector: 'app-video-juegos',
   standalone: true,
-  imports: [],
+  imports: [FormRegistroJuegosComponent, RouterLink,IndexComponent],
   templateUrl: './video-juegos.component.html',
   styleUrl: './video-juegos.component.css'
 })

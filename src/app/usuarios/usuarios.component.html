@@ -1,24 +1,22 @@
+<app-index></app-index>
 <div class="container">
   <table class="table table-hover text-center">
       <thead>
           <tr>
-              <th scope="col"> ID</th>
+        
               <th scope="col">Nombre Usuario</th>
               <th scope="col">Correo Electronico</th>
-              <th>Opciones</th>
+        
           </tr>
       </thead>
       <tbody>
 
           @for (item of usersList;track $index){
           <tr>
-              <th scope="row">{{item.id}}</th>
+            
               <td>{{item.name}}</td>
               <td>{{item.email}}</td>
-              <td>
-                  <button class="btn btn-warning button">Modificar</button>
-                  <button class="btn btn-danger button">Eliminar</button>
-              </td>
+          
           </tr>
           }
 

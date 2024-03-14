@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../core/services/users.service';
 import { Users } from '../core/interfaces/users';
+import { IndexComponent } from '../index/index.component';
 @Component({
   selector: 'app-usuarios',
   standalone: true,
-  imports: [],
+  imports: [IndexComponent],
   templateUrl: './usuarios.component.html',
   styleUrl: './usuarios.component.css'
 })

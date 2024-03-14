@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Orders } from '../core/interfaces/orders';
 import { OrdersService } from '../core/services/orders.service';
+import { FormRegistroOrdenComponent } from '../form-registro-orden/form-registro-orden.component';
+import { RouterLink } from '@angular/router';
+import { IndexComponent } from '../index/index.component';
 @Component({
   selector: 'app-orden',
   standalone: true,
-  imports: [],
+  imports: [FormRegistroOrdenComponent, RouterLink,IndexComponent],
   templateUrl: './orden.component.html',
   styleUrl: './orden.component.css'
 })

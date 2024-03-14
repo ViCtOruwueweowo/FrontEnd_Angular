@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class OrdersService {
-  API_URL:string='http://127.0.0.1:8000/api/Order';
+  API_URL:string='http://127.0.0.1:8000/api/OrderDit';
   constructor(private httpClient:HttpClient) { }
 
   getOrder():Observable<any>{

@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ShippersService } from '../core/services/shippers.service';
 import { Shippers } from '../core/interfaces/shippers';
+import { FormRegistroTransporteComponent } from '../form-registro-transporte/form-registro-transporte.component';
+import { RouterLink } from '@angular/router';
+import { IndexComponent } from '../index/index.component';
 @Component({
   selector: 'app-transporte',
   standalone: true,
-  imports: [],
+  imports: [FormRegistroTransporteComponent, RouterLink,IndexComponent],
   templateUrl: './transporte.component.html',
   styleUrl: './transporte.component.css'
 })
