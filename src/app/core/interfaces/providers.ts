@@ -1,6 +1,6 @@
 export interface Providers {
-    id:number;
+    id:string;
     nombre:string;
     direccion:string;
-    contacto:number;
+    contacto:string;
 }
