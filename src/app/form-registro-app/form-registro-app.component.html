@@ -1,17 +1,49 @@
-<div class="container"[@fadeIn] style="margin: 150px;">
+<div
+style=" height: 100vh;
+margin: 0;
+display: flex;
+justify-content: center;
+align-items: center;">
+<form [formGroup]="formuser" [@fadeIn]>
     <div class="form-floating mb-3">
-        <input type="email" class="form-control" [(ngModel)]="user.name" >
+        <input type="text" class="form-control" formControlName="name" required minlength="5" [(ngModel)]="user.name" >
         <label for="floatingInput">Nombre</label>
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger" role="alert">
+          <div *ngIf="name.errors?.['required']">
+            El campo nombre es requerido.
+          </div>
+          <div *ngIf="name.errors?.['minlength']">
+            Mínimo 3 letras.
+          </div>
+        </div>
       </div>
-    <div class="form-floating mb-3">
-        <input type="email" class="form-control" [(ngModel)]="user.email" >
-        <label for="floatingInput">Correo Electronico</label>
+      <div class="form-floating mb-3">
+        <input type="email" class="form-control" formControlName="email" required email [(ngModel)]="user.email" >
+        <label for="floatingInput">Correo Electrónico</label>
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger" role="alert">
+          <div *ngIf="email.errors?.['required']">
+            El campo Email es requerido.
+          </div>
+          <div *ngIf="email.errors?.['email']">
+            No tiene el formato de un email.
+          </div>
+        </div>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control" [(ngModel)]="user.password">
+        <input type="password" class="form-control" formControlName="pass" required minlength="8" [(ngModel)]="user.password" >
         <label for="floatingPassword">Contraseña</label>
-        <br>
-        <div class="d-grid gap-2 text-center">
-          <button class="btn btn-primary btn-lg" type="submit" (click)="createUser()" [disabled]="!isFormComplete()">Crear Cuenta</button>
+        <div *ngIf="pass.invalid && (pass.dirty || pass.touched)" class="text-danger" role="alert">
+          <div *ngIf="pass.errors?.['required']">
+            El campo Contraseña es requerido.
+          </div>
+          <div *ngIf="pass.errors?.['minlength']">
+            Mínimo 7 caracteres.
+          </div>
         </div>
+        <hr>
+      </div>
+      <div class="d-grid gap-2 text-center">
+        <button class="btn btn-primary btn-lg" type="submit" (click)="createUser()">Crear Cuenta</button>
+      </div>
+</form>
 </div>

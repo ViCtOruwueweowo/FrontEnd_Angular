@@ -1,17 +1,18 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import { animate, style, transition, trigger } from '@angular/animations';
-import { IndexComponent } from '../index/index.component';
-import { UsersService } from '../core/services/users.service';
+import { UsersService } from '../core/service/users.service';
 import { Users } from '../core/interfaces/users';
-import { NgIf } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule, NgIf } from '@angular/common';
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators,  } from '@angular/forms';
 import {  Route } from '@angular/router';
 import { UsuariosComponent } from '../usuarios/usuarios.component';
+import { FormLoginAppComponent } from '../form-login-app/form-login-app.component';
+
 @Component({
   selector: 'app-form-registro-app',
   standalone: true,
-  imports: [RouterModule,RouterLink,IndexComponent, NgIf, FormsModule, ReactiveFormsModule, UsuariosComponent],
+  imports: [CommonModule,RouterModule,RouterLink, NgIf, FormsModule, ReactiveFormsModule, UsuariosComponent, FormLoginAppComponent],
   templateUrl: './form-registro-app.component.html',
   styleUrl: './form-registro-app.component.css',
   animations:[
@@ -25,43 +26,48 @@ import { UsuariosComponent } from '../usuarios/usuarios.component';
 })
 
 export class FormRegistroAppComponent {
-public user:Users={
-  name:'',
-  email:'',
-  password:'',
-}
 
-public errorName:String| null=null;
-public errorEmail:String| null=null;
+  formuser = this.formBuilder.group({
+    name: ['',[Validators.required,Validators.minLength(3)]],
+    email:['',[Validators.required,Validators.email]],
+    pass: ['', [Validators.required, Validators.minLength(8)]],
+  })
 
-constructor(
-  private usersService:UsersService,
-  private router:Router
-){} 
+ 
 
-public isFormComplete() {
-  return this.user.name && this.user.email && this.user.password;
-}
+  get name() {
+   return this.formuser.controls.name
+  }
+  get email() {
+   return this.formuser.controls.email
+  }
+  get pass() {
+    return this.formuser.controls.pass
+  }
 
-public createUser(){
-  this.usersService.createUser(this.user).subscribe(
-    (response) => {
-         this.router.navigate(['/Users']);
-    },
-    (error) => {
-    if(error.status==401){
-      this.router.navigate(['/']);
-    }
-    if(
-      error.error?.Errores.name !==undefined &&
-      error.error?.Errores.name !==null
-    ){
-      this.errorName =error.error.Errores.name;
-    }else{
-      this.errorName=null;
-    }
+  public user: Users = {
+    name: '',
+    email: '',
+    password: '',
+  };
 
-    }
-  );
-}
+  constructor(
+    private formBuilder: FormBuilder,
+    private usersService: UsersService,
+    private router: Router,
+  ) {}
+
+
+  public createUser() {
+    this.usersService.createUser(this.user).subscribe(
+      (response) => {
+        this.router.navigate(['']);
+      },
+      (error) => {
+        if (error.status === 401) {
+          this.router.navigate(['/']);
+        }
+      }
+    );
+  }
 }

@@ -1,5 +1,5 @@
 export interface Orders {
-    id:number;
-    user_id:number;
-    shipper_id:number;
+    user_name:'',
+    shipper_name:'',
+    state:'',
 }

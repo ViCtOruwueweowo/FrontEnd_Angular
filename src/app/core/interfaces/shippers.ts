@@ -1,5 +1,5 @@
 export interface Shippers {
-    id:number;
+    id:string;
     name:string;
     direccion:string;
     email_contacto:string;

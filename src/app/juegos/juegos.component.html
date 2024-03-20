@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+<br>
+<div class="container">
+    <div class="d-grid gap-2">
+        <a class="btn btn-outline-success " routerLink="/FGames">Agregar</a>
+      </div>
+    <table class="table table-hover text-center">
+        <thead>
+            <tr>
+                <th scope="col">Juego</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Genero</th>
+                <th scope="col">Precio Unitario</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of gamesList;track $index){
+            <tr>
+                <td>{{item.nombre}}</td>
+                <td>{{item.description}}</td>
+                <td>{{item.genre}}</td>
+                <td>${{item.unitPrice}}</td>
+                <td>{{item.inStock}}</td>
+                <td>
+             
+                    <button class="btn btn-warning button">Modificar</button>
+                    <button class="btn btn-danger button" (click)="deleteGame(item.id)">Eliminar</button>
+                  </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

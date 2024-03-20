@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../core/services/users.service';
+import { UsersService } from '../core/service/users.service';
 import { Users } from '../core/interfaces/users';
-import { IndexComponent } from '../index/index.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 @Component({
   selector: 'app-usuarios',
   standalone: true,
-  imports: [IndexComponent],
+  imports: [NavbarComponent],
   templateUrl: './usuarios.component.html',
   styleUrl: './usuarios.component.css'
 })
 export class UsuariosComponent implements OnInit {
   usersList: Users[] = [];
 
-  constructor(private usersService: UsersService) {}
+  constructor(private usersService:UsersService) {}
 
   ngOnInit(): void {
     this.getUser();
@@ -21,7 +21,7 @@ export class UsuariosComponent implements OnInit {
   getUser() {
     this.usersService.getUser().subscribe({
       next: (result) => {
-        this.usersList = result[0];
+        this.usersList = result.data;
       },
       error: (err) => {
         console.log(err);

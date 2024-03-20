@@ -1,0 +1,15 @@
+<app-navbar></app-navbar>
+<br>
+<div class="container">
+    <div class="row row-cols-1 row-cols-sm-3 row-cols-md-4 g-4">
+        <div class="col" *ngFor="let item of platformList; let i = index">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+           <p><b>{{ item.videogame_name }}</b></p>
+                    <hr>
+                    <p>{{item.platform_name}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

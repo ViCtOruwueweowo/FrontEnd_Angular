@@ -1,25 +1,19 @@
-<app-index></app-index>
+<app-navbar></app-navbar>
 <div class="container">
-  <table class="table table-hover text-center">
-      <thead>
-          <tr>
-        
-              <th scope="col">Nombre Usuario</th>
-              <th scope="col">Correo Electronico</th>
-        
-          </tr>
-      </thead>
-      <tbody>
-
-          @for (item of usersList;track $index){
-          <tr>
-            
-              <td>{{item.name}}</td>
-              <td>{{item.email}}</td>
-          
-          </tr>
-          }
-
-      </tbody>
-  </table>
+    <table class="table table-hover text-center">
+        <thead>
+            <tr>
+                <th scope="col">Nombre Usuario</th>
+                <th scope="col">Correo Electronico</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of usersList;track $index){
+            <tr>
+                <td>{{item.name}}</td>
+                <td>{{item.email}}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
 </div>

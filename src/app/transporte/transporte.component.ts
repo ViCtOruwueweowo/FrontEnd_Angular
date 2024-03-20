@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ShippersService } from '../core/services/shippers.service';
+import { ShippersService } from '../core/service/shippers.service';
 import { Shippers } from '../core/interfaces/shippers';
-import { FormRegistroTransporteComponent } from '../form-registro-transporte/form-registro-transporte.component';
 import { RouterLink } from '@angular/router';
-import { IndexComponent } from '../index/index.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 @Component({
   selector: 'app-transporte',
   standalone: true,
-  imports: [FormRegistroTransporteComponent, RouterLink,IndexComponent],
+  imports: [ RouterLink,NavbarComponent],
   templateUrl: './transporte.component.html',
   styleUrl: './transporte.component.css'
 })
@@ -29,5 +28,17 @@ getShippers(){
       console.log(err);
     }
   });
+}
+
+deleteShipper(id:string){
+  this.shippersService.deleteShipper(id).subscribe(
+    (response)=>{
+      console.log('Accion Realizada Con Exito');
+      this.getShippers();
+    },
+    (error)=>{
+      console.error(error)
+    }
+  )
 }
 }

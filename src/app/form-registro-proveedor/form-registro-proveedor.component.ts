@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { IndexComponent } from '../index/index.component';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Providers } from '../core/interfaces/providers';
-import { ProvidersService } from '../core/services/providers.service';
+import { ProvidersService } from '../core/service/providers.service';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-form-registro-proveedor',
   standalone: true,
-  imports: [IndexComponent, RouterLink, RouterModule,NgIf, FormsModule, ReactiveFormsModule],
+  imports: [ RouterLink, RouterModule,NgIf, FormsModule, ReactiveFormsModule, NavbarComponent],
   templateUrl: './form-registro-proveedor.component.html',
   styleUrl: './form-registro-proveedor.component.css'
 })
@@ -27,14 +27,10 @@ constructor(
   private router:Router
 ){}
 
-public isFormComplete() {
-  return this.provider.nombre && this.provider.direccion && this.provider.contacto;
-}
-
 public createProvider(){
   this.providersService.createProvider(this.provider).subscribe(
     (response) => {
-         this.router.navigate(['/Providers']);
+         this.router.navigate(['/Provider']);
     },
     (error) => {
       if (error.status == 401) {

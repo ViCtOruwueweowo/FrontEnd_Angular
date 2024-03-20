@@ -1,7 +1,8 @@
 export interface Games {
-    id:number;
-    nombre:string;
-    unitPrice:number;
-    description:string;
-    inStock:number;
+   id:string;
+   nombre:string;
+   genre:string;
+   unitPrice:number;
+   description:string;
+   inStock:number;
 }
