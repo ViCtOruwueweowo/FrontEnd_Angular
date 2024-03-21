@@ -17,6 +17,8 @@ gamesList:Games[]=[];
 
 constructor(private gamesService:GamesService){}
 
+
+
 ngOnInit():void{
   this.getgame();
 }
