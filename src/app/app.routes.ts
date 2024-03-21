@@ -17,4 +17,6 @@ export const routes: Routes = [
     {path:'Valorations',loadComponent:()=>import('../app/valoraciones/valoraciones.component').then(c=>c.ValoracionesComponent)},
     {path:'Orders',loadComponent:()=>import('../app/ordenes/ordenes.component').then(c=>c.OrdenesComponent)},
     {path:'Details',loadComponent:()=>import('../app/detalles/detalles.component').then(c=>c.DetallesComponent)},
+    {path:'Log',loadComponent:()=>import('../app/log/log.component').then(c=>c.LogComponent)},
+
 ];

@@ -2,33 +2,32 @@
 <br>
 <div class="container">
     <div class="form-floating mb-3">
-        <input type="text" class="form-control"  >
+        <input type="text" class="form-control" [(ngModel)]="games.nombre">
         <label for="floatingInput">Nombre</label>
-      </div>
-      
-      
-      <select class="form-select form-select-lg mb-3" aria-label="Large select example">
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
+    </div>
 
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control"  >
+    <select class="form-select form-select-lg mb-3" [(ngModel)]="games.genre">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" [(ngModel)]="games.unitPrice">
         <label for="floatingInput">Precio Unitario</label>
-      </div>
+    </div>
 
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" >
-        <label for="floatingInput">Descripcion</label>
-      </div>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" [(ngModel)]="games.description">
+        <label for="floatingInput">Descripción</label>
+    </div>
 
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" >
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" [(ngModel)]="games.inStock">
         <label for="floatingInput">Stock</label>
-      </div>
+    </div>
 
-      <div class="d-grid gap-2 text-center">
-        <button class="btn btn-outline-success btn-lg" type="submit">Guardar Cambios</button>
-      </div>
+    <div class="d-grid gap-2 text-center">
+        <button class="btn btn-outline-success btn-lg" type="submit" (click)="createGames()">Guardar Cambios</button>
+    </div>
 </div>

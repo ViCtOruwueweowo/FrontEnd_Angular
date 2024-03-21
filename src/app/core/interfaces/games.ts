@@ -2,7 +2,7 @@ export interface Games {
    id:string;
    nombre:string;
    genre:string;
-   unitPrice:number;
+   unitPrice:string;
    description:string;
-   inStock:number;
+   inStock:string;
 }
