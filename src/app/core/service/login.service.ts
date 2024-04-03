@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Logins } from '../interfaces/logins';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' 
 })
 export class LoginService {
 
