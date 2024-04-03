@@ -2,25 +2,19 @@
 <div class="container" style="overflow-x: auto;">
   <table class="table table-hover">
     <thead>
-      <tr>
-        <th scope="col">Nombre</th>
-        <th scope="col">Correo</th>
-        <th scope="col">Verbo</th>
-        <th scope="col">Ruta</th>
+      <tr >
+        <th scope="col">Usuario</th>
+        <th scope="col">Consumo</th>
         <th scope="col">Query</th>
         <th scope="col">Data</th>
-        <th>Detallar</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let log of logList.slice().reverse()">        
-        <td>{{ log.user_name }}</td>
-       <td>   {{ log.user_email }}</td>
-        <td>{{ log.http_verb }}</td>
-        <td>{{ log.route }}
-        </td>
-        <td>{{ log.query }}</td>
-        <td>{{ log.data }}</td>
+        <td style="text-align:justify;">{{log.user_name}} <br> {{log.user_email}}</td>
+        <td style="text-align:justify;">{{log.http_verb}} <br> {{log.route}}</td>
+        <td style="text-align:justify;">{{log.query}}</td>
+        <td style="text-align:justify;">{{log.data}}</td>
       </tr>
     </tbody>
   </table>
