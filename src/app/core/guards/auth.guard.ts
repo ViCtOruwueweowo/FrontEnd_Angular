@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { CanActivateFn, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import { CanActivateFn, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree} from '@angular/router';
 import { Observable } from 'rxjs';
-
+import { Router, RouterModule } from '@angular/router';
 Injectable({
   providedIn: 'root'
 })
@@ -19,7 +19,7 @@ export const authGuard: CanActivateFn = (route, state) => {
 
     // Si no hay token, redirige al usuario a la página de inicio de sesión (o cualquier otra página que desees)
     // Asegúrate de tener una instancia de Router disponible para usarla aquí
-    //this.route.navigate(['/']);
+    this.router.navigate(['/']);
     return false;
   }
 };
