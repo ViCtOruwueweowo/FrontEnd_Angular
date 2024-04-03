@@ -6,6 +6,7 @@ import { Router, RouterLink, RouterModule } from '@angular/router';
 import { Logins } from '../core/interfaces/logins';
 import { LoginService } from '../core/service/login.service';
 import { UsuariosComponent } from '../usuarios/usuarios.component';
+import { LoginResponse } from '../core/interfaces/loginresponse';
 
 @Component({
   selector: 'app-form-login-app',
@@ -36,11 +37,22 @@ constructor(
   private router:Router
 ){}
 
-public logeo(){
+public logeo() {
+  // Llama al servicio de inicio de sesión (loginService)
   this.loginService.logeo(this.login).subscribe(
-  (response)=>{
-    this.router.navigate(['/Users']);
-  }
-  )
+    (response: LoginResponse) => { 
+      // Extrae el token de la respuesta (por ejemplo, response.token)
+      const token = response.token;
+
+      // Almacena el token en localStorage
+      localStorage.setItem('mi_token', token);
+
+      // Redirige al usuario a la página de usuarios
+      this.router.navigate(['/Users']);
+    },
+    (error) => {
+      console.error('Error al iniciar sesión:', error);
+    }
+  );
 }
 }

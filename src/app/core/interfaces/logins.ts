@@ -3,4 +3,5 @@ export interface Logins {
     password:string;
     code:string;
     isActive:string; 
+    token?: string;
 }

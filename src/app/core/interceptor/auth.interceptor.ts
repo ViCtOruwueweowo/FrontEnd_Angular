@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpInterceptorFn, HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  'providedIn': 'root',
+})
 export class AuthInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // Obtén el token almacenado (por ejemplo, desde localStorage)
