@@ -5,10 +5,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { routes } from './app.routes';
 import { HttpResponse } from '@angular/common/http';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
-import { Subscription, interval, takeWhile } from 'rxjs';
+
 
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes),provideHttpClient(),provideAnimations(),Router, ]
+  providers: [provideRouter(routes),provideHttpClient(),provideAnimations(),Router ]
 };

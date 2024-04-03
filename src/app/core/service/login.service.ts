@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Logins } from '../interfaces/logins';
 import { Observable } from 'rxjs';
 import { LoginResponse } from '../interfaces/loginresponse';
-
+import { HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root' 
 })
@@ -30,6 +30,21 @@ export class LoginService {
     return this.httpClient.post(
       'http://127.0.0.1:8000/api/validarCodigo',
       login
+    );
+  }
+
+  public outlogin(login:Logins):Observable<LoginResponse>{
+    const token = localStorage.getItem('mi_token');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': `Bearer ${token}`
+      })
+    };
+    return this.httpClient.post<LoginResponse>(
+      'http://127.0.0.1:8000/api/User/logout',
+      login,
+      httpOptions
     );
   }
 }

@@ -8,7 +8,7 @@ import {  Route } from '@angular/router';
 @Component({
   selector: 'app-proveedores',
   standalone: true,
-  imports: [ RouterLink, NavbarComponent],
+  imports: [ RouterLink, NavbarComponent,],
   templateUrl: './proveedores.component.html',
   styleUrl: './proveedores.component.css'
 })

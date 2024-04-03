@@ -19,7 +19,7 @@ export class ProvidersService {
   }
 
 
-public  getProvider():Observable<any>{
+  public  getProvider():Observable<any>{
     return this.httpClient.get(this.API_URL).pipe(res=>res)
   }
 
