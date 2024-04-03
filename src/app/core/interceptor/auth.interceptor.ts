@@ -3,7 +3,7 @@ import { HttpInterceptorFn, HttpRequest, HttpHandler, HttpEvent, HttpInterceptor
 import { Observable } from 'rxjs';
 
 @Injectable({
-  'providedIn': 'root',
+  providedIn: 'root',
 })
 export class AuthInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

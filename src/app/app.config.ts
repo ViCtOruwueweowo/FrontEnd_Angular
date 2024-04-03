@@ -7,8 +7,9 @@ import { HttpResponse } from '@angular/common/http';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Subscription, interval, takeWhile } from 'rxjs';
+import { AuthInterceptor } from './core/interceptor/auth.interceptor';
 
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes),provideHttpClient(),provideAnimations(),Router, ]
+  providers: [provideRouter(routes),provideHttpClient(),provideAnimations(),Router, AuthInterceptor ]
 };

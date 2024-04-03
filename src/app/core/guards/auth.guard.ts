@@ -1,8 +1,30 @@
 import { Injectable } from '@angular/core';
-import { CanActivateFn, Router } from '@angular/router';
+import { CanActivateFn, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+
+Injectable({
+  providedIn: 'root'
+})
 
 export const authGuard: CanActivateFn = (route, state) => {
-  return true;
+  const token = localStorage.getItem('mi_token'); // Obtiene el token del localStorage
+
+  console.log('Token obtenido del localStorage:', token); // Imprime el token
+  if (token) {
+    console.log('Paso por true'); 
+    // Si el token existe, permite la navegación
+    return true;
+  } else {
+    console.log('Paso por false'); 
+
+    // Si no hay token, redirige al usuario a la página de inicio de sesión (o cualquier otra página que desees)
+    // Asegúrate de tener una instancia de Router disponible para usarla aquí
+    //this.route.navigate(['/']);
+    return false;
+  }
 };
 
+
+
 // servicio e interface aqui dentro importados
+
