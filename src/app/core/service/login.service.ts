@@ -15,5 +15,19 @@ export class LoginService {
     return this.httpClient.post(
       'http://127.0.0.1:8000/api/User/login',login,
     );
+  } 
+
+  public sendEmail(login:Logins){
+    return this.httpClient.post(
+      'http://127.0.0.1:8000/api/sendEmail',
+      login
+    );
+  }
+
+  public validarCodigo(login:Logins){
+    return this.httpClient.post(
+      'http://127.0.0.1:8000/api/validarCodigo',
+      login
+    );
   }
 }

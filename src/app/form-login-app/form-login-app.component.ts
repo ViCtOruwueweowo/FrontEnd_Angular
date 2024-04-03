@@ -27,6 +27,8 @@ export class FormLoginAppComponent {
 public login:Logins={
   email:'',
   password:'',
+  code:'',
+  isActive:'',
 }
 
 constructor(

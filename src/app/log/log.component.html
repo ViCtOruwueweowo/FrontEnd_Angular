@@ -9,14 +9,16 @@
         <th scope="col">Ruta</th>
         <th scope="col">Query</th>
         <th scope="col">Data</th>
+        <th>Detallar</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let log of logList">
+      <tr *ngFor="let log of logList.slice().reverse()">        
         <td>{{ log.user_name }}</td>
-        <td>{{ log.user_email }}</td>
+       <td>   {{ log.user_email }}</td>
         <td>{{ log.http_verb }}</td>
-        <td>{{ log.route }}</td>
+        <td>{{ log.route }}
+        </td>
         <td>{{ log.query }}</td>
         <td>{{ log.data }}</td>
       </tr>
