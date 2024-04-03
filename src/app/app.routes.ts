@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth.guard';
-import { AuthInterceptor } from './core/interceptor/auth.interceptor';
 
 export const routes: Routes = [
     {path:'',loadComponent:()=>import('../app/form-login-app/form-login-app.component').then(c=>c.FormLoginAppComponent)},

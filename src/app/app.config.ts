@@ -7,15 +7,16 @@ import { HttpResponse, withInterceptors } from '@angular/common/http';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Subscription, interval, takeWhile } from 'rxjs';
-import { AuthInterceptor } from './core/interceptor/auth.interceptor';
+import { authInterceptor } from './core/interceptor/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes), 
-    provideHttpClient(),
-    //provideHttpClient(withInterceptors([ AuthInterceptor ])),
+    //provideHttpClient(),
+    provideHttpClient(withInterceptors([ authInterceptor ])),
+    HttpClient,
     provideAnimations(), 
     Router, 
   ]
