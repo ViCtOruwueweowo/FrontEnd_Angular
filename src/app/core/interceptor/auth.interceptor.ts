@@ -7,11 +7,14 @@ import { Observable } from 'rxjs';
 })
 export class AuthInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // Obtén el token almacenado (por ejemplo, desde localStorage)
-    const token = localStorage.getItem('mi_token'); // Asegúrate de usar la clave correcta
+
+    console.log('Pasando por el interceptor'); // Esta línea se imprimirá cada vez que una solicitud pase por el interceptor
+
+    const token = localStorage.getItem('token'); 
 
     // Si tienes un token válido, agrégalo al encabezado
     if (token) {
+      console.log('Paso por true en interceptor'); 
       const authRequest = request.clone({
         setHeaders: {
           Authorization: `Bearer ${token}`
@@ -19,6 +22,7 @@ export class AuthInterceptor implements HttpInterceptor {
       });
       return next.handle(authRequest);
     } else {
+      console.log('Paso por false en interceptor'); 
       // Si no hay token, simplemente continúa con la solicitud original
       return next.handle(request);
     }

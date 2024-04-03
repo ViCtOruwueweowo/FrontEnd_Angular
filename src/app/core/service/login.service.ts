@@ -34,7 +34,7 @@ export class LoginService {
   }
 
   public outlogin(login:Logins):Observable<LoginResponse>{
-    const token = localStorage.getItem('mi_token');
+    const token = localStorage.getItem('token');
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',

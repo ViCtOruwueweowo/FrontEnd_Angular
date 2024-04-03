@@ -45,7 +45,7 @@ public logeo() {
       const token = response.token;
 
       // Almacena el token en localStorage
-      localStorage.setItem('mi_token', token);
+      localStorage.setItem('token', token);
 
       // Redirige al usuario a la página de usuarios
       this.router.navigate(['/Users']);
