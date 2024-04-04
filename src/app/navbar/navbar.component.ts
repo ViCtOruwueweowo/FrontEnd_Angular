@@ -26,7 +26,7 @@ constructor(
 ){}
 
 public logout(){
-  localStorage.removeItem('mi_token');
+  localStorage.removeItem('token');
   this.router.navigate(['/']);
 }
 

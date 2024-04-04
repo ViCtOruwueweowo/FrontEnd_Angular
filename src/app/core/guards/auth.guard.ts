@@ -10,7 +10,7 @@ Injectable({
 export const authGuard: CanActivateFn = (route, state) => {
   let router = new Router();
 
-  const token = localStorage.getItem('mi_token'); // Obtiene el token del localStorage
+  const token = localStorage.getItem('token'); // Obtiene el token del localStorage
 
   console.log('Token obtenido del localStorage:', token); // Imprime el token
   if (token) {
@@ -20,8 +20,6 @@ export const authGuard: CanActivateFn = (route, state) => {
   } else {
     console.log('Paso por false');
 
-    // Si no hay token, redirige al usuario a la página de inicio de sesión (o cualquier otra página que desees)
-    // Asegúrate de tener una instancia de Router disponible para usarla aquí
     router.navigate(['/']);
     return false;
   }

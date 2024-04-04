@@ -4,7 +4,6 @@ import { Providers } from '../core/interfaces/providers';
 import {  Router, RouterLink } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
 import {  Route } from '@angular/router';
-import { AuthInterceptor } from '../core/interceptor/auth.interceptor';
 
 @Component({
   selector: 'app-proveedores',
