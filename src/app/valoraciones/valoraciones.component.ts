@@ -17,17 +17,33 @@ valorationList:Valorations[]=[]
 constructor(private valorationsService:ValorationsService){}
 
 ngOnInit():void{
-  this.getvaloration();
+  this.getValorations();
 }
 
-getvaloration(){
-  this.valorationsService.getValoration().subscribe({
-    next:(result)=>{
-      this.valorationList=result.data;
+getValorations(): void {
+  const token = this.obtenerTokenDelLocalStorage();
+  if (!token) {
+    console.error('El token no está presente en el localStorage.');
+    return;
+  }
+
+  // Agrega el token a la solicitud HTTP (por ejemplo, en los encabezados)
+  const headers = { Authorization: `Bearer ${token}` };
+
+  this.valorationsService.getValoration().subscribe(
+    (result) => {
+      // Maneja la respuesta exitosa aquí
+      this.valorationList = result.data; // Asigna los datos a la lista de valoraciones
     },
-    error: (err) => {
-      console.log(err);
+    (err) => {
+      // Maneja el error aquí (por ejemplo, muestra un mensaje de error)
+      console.error('Error al obtener las valoraciones:', err);
     }
-  })
+  );
+}
+
+private obtenerTokenDelLocalStorage(): string | null {
+  const localStorage = window.localStorage;
+  return localStorage.getItem('mi_token');
 }
 }

@@ -4,7 +4,7 @@ import { authGuard } from './core/guards/auth.guard';
 export const routes: Routes = [
     {path:'',loadComponent:()=>import('../app/form-login-app/form-login-app.component').then(c=>c.FormLoginAppComponent)},
     {path:'Users',loadComponent:()=>import('../app/usuarios/usuarios.component').then(c=>c.UsuariosComponent), canActivate: [authGuard]},
-    {path:'CreateUser',loadComponent:()=>import('../app/form-registro-app/form-registro-app.component').then(c=>c.FormRegistroAppComponent), canActivate: [authGuard]},
+    {path:'CreateUser',loadComponent:()=>import('../app/form-registro-app/form-registro-app.component').then(c=>c.FormRegistroAppComponent)},
     {path:'NavBar',loadComponent:()=>import('../app/navbar/navbar.component').then(c=>c.NavbarComponent), canActivate: [authGuard]},
     {path:'Users',loadComponent:()=>import('../app/usuarios/usuarios.component').then(c=>c.UsuariosComponent), canActivate: [authGuard]},
     {path:'Games',loadComponent:()=>import('../app/juegos/juegos.component').then(c=>c.JuegosComponent), canActivate: [authGuard]},
