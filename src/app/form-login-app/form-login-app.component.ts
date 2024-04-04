@@ -1,7 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import { Logins } from '../core/interfaces/logins';
 import { LoginService } from '../core/service/login.service';
@@ -27,6 +27,23 @@ import { disableDebugTools } from '@angular/platform-browser';
 })
 export class FormLoginAppComponent {
 
+  formusers = this.formBuilder.group({
+    email:['',[Validators.required,Validators.email]],
+    pass: ['', [Validators.required]],
+  })
+
+ 
+
+
+  get email() {
+   return this.formusers.controls.email
+  }
+  get pass() {
+    return this.formusers.controls.pass
+  }
+
+
+
 public login:Logins={
   email:'',
   password:'',
@@ -34,12 +51,21 @@ public login:Logins={
   isActive:'',
 }
 
+
+loading:boolean=false;
+message:string='';
+imageUrl: string = '';
+
 constructor(
+  private formBuilder:FormBuilder,
   private loginService:LoginService,
   private router:Router
 ){}
 
 public logeo() {
+  this.loading = true;
+  this.imageUrl = 'https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700';
+
   // Llama al servicio de inicio de sesión (loginService)
   this.loginService.logeo(this.login).subscribe(
     (response: LoginResponse) => { 

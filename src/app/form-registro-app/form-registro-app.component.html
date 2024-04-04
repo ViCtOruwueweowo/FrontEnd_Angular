@@ -3,9 +3,9 @@ style=" height: 100vh;
 margin: 0;
 display: flex;
 justify-content: center;
-align-items: center;">
-<form [formGroup]="formuser" [@fadeIn]>
-    <div class="form-floating mb-3">
+align-items: center;" >
+<form [formGroup]="formuser" [@fadeIn] *ngIf="!loading">
+    <div class="form-floating mb-3" >
         <input type="text" class="form-control" formControlName="name" required minlength="5" [(ngModel)]="user.name" >
         <label for="floatingInput">Nombre</label>
         <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger" role="alert">
@@ -43,7 +43,15 @@ align-items: center;">
         <hr>
       </div>
       <div class="d-grid gap-2 text-center">
-        <button class="btn btn-primary btn-lg" type="submit" (click)="createUser()">Crear Cuenta</button>
+        <button class="btn btn-primary btn-lg" type="submit" (click)="createUser()" [disabled]="!formuser.valid">Crear Cuenta</button>
       </div>
+    
 </form>
+
+
+<div *ngIf="loading">
+  <img style="height: 350px;" [src]="imageUrl">
+
+
+</div>
 </div>

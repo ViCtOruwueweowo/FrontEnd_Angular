@@ -51,6 +51,10 @@ export class FormRegistroAppComponent {
     password: '',
   };
 
+loading:boolean=false;
+message:string='';
+imageUrl: string = '';
+
   constructor(
     private formBuilder: FormBuilder,
     private usersService: UsersService,
@@ -59,11 +63,17 @@ export class FormRegistroAppComponent {
 
 
   public createUser() {
+    this.loading = true;
+    this.imageUrl = 'https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700';
+  
+
     this.usersService.createUser(this.user).subscribe(
       (response) => {
+        this.loading = false;
         this.router.navigate(['']);
       },
       (error) => {
+        this.loading = false;
         if (error.status === 401) {
           this.router.navigate(['/']);
         }
