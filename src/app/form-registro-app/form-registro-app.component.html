@@ -8,14 +8,18 @@ align-items: center;" >
     <div class="form-floating mb-3" >
         <input type="text" class="form-control" formControlName="name" required minlength="5" [(ngModel)]="user.name" >
         <label for="floatingInput">Nombre</label>
+        
+        
         <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger" role="alert">
-          <div *ngIf="name.errors?.['required']">
+          <div class="alert-danger" *ngIf="name.errors?.['required']">
             El campo nombre es requerido.
           </div>
           <div *ngIf="name.errors?.['minlength']">
             Mínimo 3 letras.
           </div>
         </div>
+
+
       </div>
       <div class="form-floating mb-3">
         <input type="email" class="form-control" formControlName="email" required email [(ngModel)]="user.email" >
@@ -51,7 +55,5 @@ align-items: center;" >
 
 <div *ngIf="loading">
   <img style="height: 350px;" [src]="imageUrl">
-
-
 </div>
 </div>

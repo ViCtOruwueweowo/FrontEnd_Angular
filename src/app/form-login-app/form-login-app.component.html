@@ -1,5 +1,8 @@
 <div style="height: 100vh; margin: 0; display: flex; justify-content: center; align-items: center;">
-  <div [@fadeIn] *ngIf="!loading">
+  <div *ngIf="message && !loading" class="alert alert-danger">
+    {{ message }}
+  </div>
+  <div [@fadeIn] *ngIf="!loading && !message">
     <div class="container">
       <form [formGroup]="formusers" >
         <div class="form-floating mb-3">
@@ -19,13 +22,9 @@
       <div class="d-grid gap-2 text-center">
         <a class="btn btn-success btn-lg" type="button" routerLink="/CreateUser">Crear Cuenta</a>
       </div>
-
     </div>
   </div>
-
   <div *ngIf="loading">
     <img style="height: 350px;" [src]="imageUrl">
-  
-  
   </div>
 </div>

@@ -49,6 +49,7 @@ export class FormRegistroAppComponent {
     name: '',
     email: '',
     password: '',
+    role_id:'',
   };
 
 loading:boolean=false;
@@ -65,8 +66,6 @@ imageUrl: string = '';
   public createUser() {
     this.loading = true;
     this.imageUrl = 'https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700';
-  
-
     this.usersService.createUser(this.user).subscribe(
       (response) => {
         this.loading = false;

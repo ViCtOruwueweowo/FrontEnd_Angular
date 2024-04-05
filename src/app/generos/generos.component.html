@@ -2,10 +2,18 @@
 <br>
 <div class="container" >
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <div class="col" *ngFor="let item of gamesList; let i = index">
+
+
+
+        <div class="col" *ngFor="let item of gendersList; let i = index">
             <div class="card shadow-sm">
                 <div class="card-body text-center">
-           <p>{{ item.genre }}</p>
+           <p>{{ item.name }}</p>
+           <img style="height: 10px; width: 340px;" src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" alt="">
+           <p>{{item.description}}</p>
+
+
+           
                 </div>
             </div>
         </div>

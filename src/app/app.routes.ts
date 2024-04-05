@@ -16,8 +16,12 @@ export const routes: Routes = [
     {path:'FProvider',loadComponent:()=>import('../app/form-registro-proveedor/form-registro-proveedor.component').then(c=>c.FormRegistroProveedorComponent), canActivate: [authGuard]},
     {path:'Gender',loadComponent:()=>import('../app/generos/generos.component').then(c=>c.GenerosComponent), canActivate: [authGuard]},
     {path:'Valorations',loadComponent:()=>import('../app/valoraciones/valoraciones.component').then(c=>c.ValoracionesComponent), canActivate: [authGuard]},
+    {path:'FValorations',loadComponent:()=>import('../app/form-registro-valoracion/form-registro-valoracion.component').then(c=>c.FormRegistroValoracionComponent), canActivate: [authGuard]},
     {path:'Orders',loadComponent:()=>import('../app/ordenes/ordenes.component').then(c=>c.OrdenesComponent), canActivate: [authGuard]},
     {path:'Details',loadComponent:()=>import('../app/detalles/detalles.component').then(c=>c.DetallesComponent), canActivate: [authGuard]},
     {path:'Log',loadComponent:()=>import('../app/log/log.component').then(c=>c.LogComponent), canActivate: [authGuard]},
     {path:'Auth',loadComponent:()=>import('../app/verificar/verificar.component').then(c=>c.VerificarComponent), canActivate: [authGuard]},
+    {path:'GamePro',loadComponent:()=>import('../app/juego-proveedor/juego-proveedor.component').then(c=>c.JuegoProveedorComponent), canActivate: [authGuard]},
+    {path:'FGamePro',loadComponent:()=>import('../app/form-registro-juegop/form-registro-juegop.component').then(c=>c.FormRegistroJuegopComponent), canActivate: [authGuard]},
+    {path:'OrderDetail',loadComponent:()=>import('../app/orden-detalle/orden-detalle.component').then(c=>c.OrdenDetalleComponent), canActivate: [authGuard]},
 ];

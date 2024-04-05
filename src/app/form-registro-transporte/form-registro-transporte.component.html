@@ -1,19 +1,64 @@
 <app-navbar></app-navbar>
-<br>
+
 <div class="container">
+  <div *ngIf="loading" class="alert alert-success text-center" role="alert">
+    <img style="height: 350px;" [src]="imageUrl">
+  </div>
+
+  <div *ngIf="message && !loading" class="alert alert-danger text-center">
+ <h1>   ¡¡{{ message }}!!</h1>
+  </div>
+
+  <form [formGroup]="formshippers" *ngIf="!loading && !message">
+    
     <div class="form-floating mb-3">
-        <input type="text" class="form-control" [(ngModel)]="shippers.name" >
-        <label for="floatingInput">Nombre</label>
-      </div>
-    <div class="form-floating mb-3">
-        <input type="text" class="form-control" [(ngModel)]="shippers.direccion" >
-        <label for="floatingInput">Direccion</label>
-      </div>
-      <div class="form-floating">
-        <input type="text" class="form-control" [(ngModel)]="shippers.email_contacto">
-        <label for="floatingPassword">Correo</label>
-        <br>
-        <div class="d-grid gap-2 text-center">
-          <button class="btn btn-outline-success btn-lg" type="submit" (click)="createShippers()" >Guardar Cambios</button>
+      <input  type="text" class="form-control" formControlName="name" [(ngModel)]="shippers.name">
+      <label for="floatingInput">Nombre</label>
+
+      <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger" role="alert">
+        <div class="alert-danger" *ngIf="name.errors?.['required']">
+          El Campo Es Requerido.
         </div>
+        <div *ngIf="name.errors?.['minlength']">
+          Mínimo 5 letras.
+        </div>
+        <div *ngIf="name.errors?.['maxlength']">
+          Exceso De Letras
+        </div>
+      </div>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" formControlName="direccion" [(ngModel)]="shippers.direccion">
+      <label for="floatingInput">Direccion</label>
+      <div *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)" class="text-danger" role="alert">
+        <div class="alert-danger" *ngIf="direccion.errors?.['required']">
+          El Campo Es Requerido.
+        </div>
+        <div *ngIf="direccion.errors?.['minlength']">
+          Mínimo 5 Letras.
+        </div>
+        <div *ngIf="direccion.errors?.['maxlength']">
+          Exceso De Letras
+        </div>
+      </div>
+    </div>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" formControlName="email_contacto" [(ngModel)]="shippers.email_contacto">
+      <label for="floatingPassword">Correo</label>
+      <div *ngIf="email_contacto.invalid && (email_contacto.dirty || email_contacto.touched)" class="text-danger" role="alert">
+        <div class="alert-danger" *ngIf="email_contacto.errors?.['required']">
+          El Campo Es Requerido.
+        </div>
+        <div *ngIf="email_contacto.errors?.['email']">
+          Requiere Formato De Email.
+        </div>
+      </div>
+    </div>
+<hr>
+    <div class="d-grid gap-2 text-center">
+      <button class="btn btn-success btn-lg" type="submit" [disabled]="!formshippers.valid" (click)="createShippers()">Guardar Cambios</button>
+    </div>
+  </form>
 </div>

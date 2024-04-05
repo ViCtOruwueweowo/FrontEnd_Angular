@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Valorations } from '../interfaces/valorations';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,5 +12,12 @@ export class ValorationsService {
   public  getValoration():Observable<any>
   {
     return this.httpClient.get(this.API_URL).pipe(res=>res);
+  }
+
+  public createvaloration(valorations:Valorations){
+    return this.httpClient.post(
+      'http://127.0.0.1:8000/api/valorations',
+      valorations
+    );
   }
 }

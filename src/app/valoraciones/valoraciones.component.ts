@@ -3,11 +3,12 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { NgFor } from '@angular/common';
 import { Valorations } from '../core/interfaces/valorations';
 import { ValorationsService } from '../core/service/valorations.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-valoraciones',
   standalone: true,
-  imports: [NavbarComponent,NgFor],
+  imports: [NavbarComponent,NgFor,RouterLink],
   templateUrl: './valoraciones.component.html',
   styleUrl: './valoraciones.component.css'
 })
@@ -21,15 +22,6 @@ ngOnInit():void{
 }
 
 getValorations(): void {
-  const token = this.obtenerTokenDelLocalStorage();
-  if (!token) {
-    console.error('El token no está presente en el localStorage.');
-    return;
-  }
-
-  // Agrega el token a la solicitud HTTP (por ejemplo, en los encabezados)
-  const headers = { Authorization: `Bearer ${token}` };
-
   this.valorationsService.getValoration().subscribe(
     (result) => {
       // Maneja la respuesta exitosa aquí
@@ -40,10 +32,5 @@ getValorations(): void {
       console.error('Error al obtener las valoraciones:', err);
     }
   );
-}
-
-private obtenerTokenDelLocalStorage(): string | null {
-  const localStorage = window.localStorage;
-  return localStorage.getItem('mi_token');
 }
 }

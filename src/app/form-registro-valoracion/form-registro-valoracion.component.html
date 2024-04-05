@@ -1,0 +1,24 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    <form>
+        <div class="form-floating mb-3">
+            <select class="form-select" formControlName="user_id" aria-label="Default select example" >
+                <option *ngFor="let item of usersList; let i = index" value="{{item.password}}">{{item.name}}</option>
+            </select>
+            <label for="floatingInput">Usuario</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <select class="form-select" formControlName="videogame_id" aria-label="Default select example" >
+                <option *ngFor="let item of gamesList; let i = index" value="{{item.id}}">{{item.nombre}}</option>
+            </select>
+            <label for="floatingInput">Juego</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" formControlName="estrellas">
+            <label for="floatingInput">Calificacion</label>
+        </div>
+    </form>
+</div>

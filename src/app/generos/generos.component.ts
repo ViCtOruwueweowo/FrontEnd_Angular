@@ -3,6 +3,8 @@ import { GamesService } from '../core/service/games.service';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { Games } from '../core/interfaces/games';
 import { NgFor } from '@angular/common';
+import { Genders } from '../core/interfaces/genders';
+import { GendersService } from '../core/service/genders.service';
 @Component({
   selector: 'app-generos',
   standalone: true,
@@ -12,24 +14,24 @@ import { NgFor } from '@angular/common';
 })
 export class GenerosComponent {
 
+  gendersList:Genders[]=[];
 
-  gamesList:Games[]=[];
-
-  constructor(private gamesService:GamesService){}
+  constructor(private gendersService:GendersService){}
   
 
   ngOnInit():void{
-    this.getgame();
+    this.getgender();
   }
   
-  getgame() {
-    this.gamesService.getgame().subscribe({
+  getgender() {
+    this.gendersService.getgender().subscribe({
       next: (result) => {
-        this.gamesList = result.data;
+        this.gendersList = result.data;
       },
       error: (err) => {
         console.log(err);
       }
     });
   }
+
 }

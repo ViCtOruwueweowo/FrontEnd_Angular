@@ -1,19 +1,77 @@
 <app-navbar></app-navbar>
-<br>
+
 <div class="container">
+  <div *ngIf="message && !loading" class="alert alert-danger">
+    {{ message }}
+  </div>
+
+  <form [formGroup]="formproviders" *ngIf="!loading && !message">
     <div class="form-floating mb-3">
-        <input type="text" class="form-control" [(ngModel)]="provider.nombre" >
-        <label for="floatingInput">Nombre</label>
-      </div>
-    <div class="form-floating mb-3">
-        <input type="text" class="form-control" [(ngModel)]="provider.direccion" >
-        <label for="floatingInput">Direccion</label>
-      </div>
-      <div class="form-floating">
-        <input type="number" class="form-control" [(ngModel)]="provider.contacto">
-        <label for="floatingPassword">Numero De Contacto</label>
-        <br>
-        <div class="d-grid gap-2 text-center">
-          <button class="btn btn-outline-success btn-lg" type="submit" (click)="createProvider()">Guardar Cambios</button>
+      <input type="text" class="form-control" formControlName="nombre" [(ngModel)]="provider.nombre">
+      <label for="floatingInput">Nombre</label>
+      
+      <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="text-danger" role="alert">
+        <div class="alert-danger" *ngIf="nombre.errors?.['required']">
+          El campo nombre es requerido.
         </div>
+        <div *ngIf="nombre.errors?.['minlength']">
+          Mínimo 5 letras.
+        </div>
+        <div *ngIf="nombre.errors?.['maxlength']">
+          Exceso De Letras
+        </div>
+      </div>
+
+    </div>
+
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" formControlName="direccion" [(ngModel)]="provider.direccion">
+      <label for="floatingInput">Dirección</label>
+      <div *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)" class="text-danger" role="alert">
+        <div class="alert-danger" *ngIf="direccion.errors?.['required']">
+          El Campo De Direccion Es Requerido.
+        </div>
+        <div *ngIf="direccion.errors?.['minlength']">
+          Mínimo 5 Letras.
+        </div>
+        <div *ngIf="direccion.errors?.['maxlength']">
+          Exceso De Letras
+        </div>
+      </div>
+    </div>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" formControlName="contacto" [(ngModel)]="provider.contacto">
+      <label for="floatingPassword">Número de Contacto</label>
+
+      <div *ngIf="contacto.invalid && (contacto.dirty || contacto.touched)" class="text-danger" role="alert">
+        <div class="alert-danger" *ngIf="contacto.errors?.['required']">
+          El Campo De Contacto Es Requerido.
+        </div>
+        <div *ngIf="contacto.errors?.['pattern']">
+          Solo Numeros.
+        </div>
+        <div *ngIf="contacto.errors?.['minlength']">
+          Mínimo 10 Digitos.
+        </div>
+        <div *ngIf="contacto.errors?.['maxlength']">
+          Exceso De Digitos.
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="d-grid gap-2 text-center">
+      <button class="btn btn-success btn-lg" type="submit" (click)="createProvider()"
+        [disabled]="!formproviders.valid">Guardar Cambios</button>
+    </div>
+
+  </form>
+
+  <div *ngIf="loading" class="alert alert-success text-center" role="alert">
+    <h1>Exito, Accion Realizada</h1>
+    <img style="height: 350px;" [src]="imageUrl">
+  </div>
+
 </div>

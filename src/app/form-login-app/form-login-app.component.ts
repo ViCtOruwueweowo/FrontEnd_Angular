@@ -7,8 +7,6 @@ import { Logins } from '../core/interfaces/logins';
 import { LoginService } from '../core/service/login.service';
 import { UsuariosComponent } from '../usuarios/usuarios.component';
 import { LoginResponse } from '../core/interfaces/loginresponse';
-import { DisabledInitialNavigationFeature } from '@angular/router';
-import { disableDebugTools } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-form-login-app',
@@ -63,23 +61,26 @@ constructor(
 ){}
 
 public logeo() {
+  this.message = "asdasdsad";
   this.loading = true;
   this.imageUrl = 'https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700';
-
   // Llama al servicio de inicio de sesión (loginService)
   this.loginService.logeo(this.login).subscribe(
     (response: LoginResponse) => { 
       // Extrae el token de la respuesta (por ejemplo, response.token)
       const token = response.token;
-
       // Almacena el token en localStorage
       localStorage.setItem('token', token);
-
       // Redirige al usuario a la página de usuarios
       this.router.navigate(['/Users']);
     },
     (error) => {
-      console.error('Error al iniciar sesión:', error);
+      console.error('Error al iniciar sesiónes:', error);
+      this.message = '¡Ups!, Error En Correo O Contraseña'; 
+      this.loading = false;
+      setTimeout(() => {
+        location.reload(); 
+      }, 2000); 
     }
   );
 }

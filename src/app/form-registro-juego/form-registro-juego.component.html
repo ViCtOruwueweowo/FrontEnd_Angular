@@ -1,33 +1,103 @@
 <app-navbar></app-navbar>
-<br>
+
 <div class="container">
-    <div class="form-floating mb-3">
-        <input type="text" class="form-control" [(ngModel)]="games.nombre">
-        <label for="floatingInput">Nombre</label>
-    </div>
 
-    <select class="form-select form-select-lg mb-3" [(ngModel)]="games.genre">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-    </select>
+    <div *ngIf="message && !loading" class="alert alert-danger">
+        {{ message }}
+      </div>
+    <form [formGroup]="formgames" *ngIf="!loading && !message">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" formControlName="nombre" [(ngModel)]="games.nombre">
+            <label for="floatingInput">Nombre</label>
 
-    <div class="form-floating mb-3">
-        <input type="text" class="form-control" [(ngModel)]="games.unitPrice">
-        <label for="floatingInput">Precio Unitario</label>
-    </div>
-
-    <div class="form-floating mb-3">
-        <input type="text" class="form-control" [(ngModel)]="games.description">
-        <label for="floatingInput">Descripción</label>
-    </div>
-
-    <div class="form-floating mb-3">
-        <input type="text" class="form-control" [(ngModel)]="games.inStock">
-        <label for="floatingInput">Stock</label>
-    </div>
-
-    <div class="d-grid gap-2 text-center">
-        <button class="btn btn-outline-success btn-lg" type="submit" (click)="createGames()">Guardar Cambios</button>
-    </div>
+            <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="text-danger" role="alert">
+                <div class="alert-danger" *ngIf="nombre.errors?.['required']">
+                  El Campo Es Requerido
+                </div>
+                <div *ngIf="nombre.errors?.['minlength']">
+                  Mínimo 5 Letras.
+                </div>
+                <div *ngIf="nombre.errors?.['maxlength']">
+                  Exceso De Letras
+                </div>
+              </div>
+        </div>
+    
+        <div class="form-floating mb-3">
+            <select class="form-select" formControlName="genre_id" aria-label="Default select example" [(ngModel)]="games.genre_id">
+                <option *ngFor="let item of gendersList; let i = index" value="{{item.id}}">{{item.name}}</option>
+            </select>
+            <label for="floatingInput">Genero</label>
+            <div *ngIf="genre_id.invalid && (genre_id.dirty || genre_id.touched)" class="text-danger" role="alert">
+                <div class="alert-danger" *ngIf="genre_id.errors?.['required']">
+                    El Campo Es Requerido
+                </div>
+            </div>
+        </div>
+    
+        
+    
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" formControlName="unitPrice" [(ngModel)]="games.unitPrice">
+            <label for="floatingInput">Precio Unitario</label>
+            <div *ngIf="unitPrice.invalid && (unitPrice.dirty || unitPrice.touched)" class="text-danger" role="alert">
+                <div class="alert-danger" *ngIf="unitPrice.errors?.['required']">
+                  El Campo Es Requerido
+                </div>
+                <div *ngIf="unitPrice.errors?.['minlength']">
+                  Mínimo 2 Digitos
+                </div>
+                <div *ngIf="unitPrice.errors?.['maxlength']">
+                  Exceso De Digitos
+                </div>
+                <div *ngIf="unitPrice.errors?.['pattern']">
+                    Solo Numeros
+                  </div>
+              </div>
+        </div>
+    
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" formControlName="description" [(ngModel)]="games.description">
+            <label for="floatingInput">Descripción</label>
+            
+            <div *ngIf="description.invalid && (description.dirty || description.touched)" class="text-danger" role="alert">
+                <div class="alert-danger" *ngIf="description.errors?.['required']">
+                  El Campo Es Requerido
+                </div>
+                <div *ngIf="description.errors?.['minlength']">
+                  Mínimo 10 Letras.
+                </div>
+                <div *ngIf="description.errors?.['maxlength']">
+                  Exceso De Letras
+                </div>
+              </div>
+        </div>
+    
+        <div class="form-floating mb-3" >
+            <input formControlName="inStock" type="text" class="form-control" [(ngModel)]="games.inStock">
+            <label for="floatingInput">Stock</label>
+            <div *ngIf="inStock.invalid && (inStock.dirty || inStock.touched)" class="text-danger" role="alert">
+                <div class="alert-danger" *ngIf="inStock.errors?.['required']">
+                  El Campo Es Requerido
+                </div>
+                <div *ngIf="inStock.errors?.['minlength']">
+                  Mínimo 2 Digitos
+                </div>
+                <div *ngIf="inStock.errors?.['maxlength']">
+                  Exceso De Digitos
+                </div>
+                <div *ngIf="inStock.errors?.['pattern']">
+                    Solo Numeros
+                  </div>
+              </div>
+        </div>
+    
+        <div class="d-grid gap-2 text-center">
+            <button class="btn btn-success btn-lg" type="submit" [disabled]="!formgames.valid" (click)="createGames()">Guardar Cambios</button>
+        </div>
+    </form>
+    <div *ngIf="loading" class="alert alert-success text-center" role="alert">
+        <h1>Exito, Accion Realizada</h1>
+        <img style="height: 350px;" [src]="imageUrl">
+      </div>
 </div>
