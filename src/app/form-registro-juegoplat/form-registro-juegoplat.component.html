@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+
+    <form [formGroup]="platformsForm">
+   
+        <div class="form-floating mb-3">
+            <select class="form-select" formControlName="videogame_id" aria-label="Default select example" [(ngModel)]="platforms.videogame_id">
+                <option *ngFor="let item of gamesList; let i = index" [value]="item.id">{{item.nombre}}</option>
+            </select>
+            <label for="floatingInput">Juego</label>
+     
+        </div>
+    
+        <div class="form-floating mb-3">
+            <select class="form-select" formControlName="platform_id" aria-label="Default select example" [(ngModel)]="platforms.platform_id">
+                <option *ngFor="let item of platformList; let i = index" [value]="item.id">{{item.plataforma}}</option>
+            </select>
+            <label for="floatingInput">Plataforma</label>
+  
+        </div>
+        <div class="d-grid gap-2 text-center">
+            <button class="btn btn-success btn-lg" type="submit"  (click)="createplatforms()">Guardar Cambios</button>
+        </div>
+    </form>
+
+</div>

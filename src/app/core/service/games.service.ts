@@ -15,7 +15,10 @@ export class GamesService {
     return this.httpClient.get(this.API_URL).pipe(res=>res);
   }
 
-
+  getMyGame(id:string){
+    return this.httpClient.get( `${this.API_URL}/${id}`)
+  }
+  
   public createGame(games:Games){
     return this.httpClient.post(
       'http://127.0.0.1:8000/api/videogames',
@@ -28,4 +31,14 @@ export class GamesService {
       `${this.API_URL}/${id}`
     );
   }
+
+  public putGame(id: string, body: any){
+    return this.httpClient.put(
+      `${this.API_URL}/${id}`, body
+    );
 }
+
+
+}
+
+

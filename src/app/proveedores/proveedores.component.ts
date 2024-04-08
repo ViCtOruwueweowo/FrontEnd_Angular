@@ -17,14 +17,27 @@ export class ProveedoresComponent implements OnInit {
 
 
   providersList: Providers[]=[];
+  selectProvider:Providers;
 
   constructor(
     private formBuilder: FormBuilder,
     private providersService:ProvidersService, 
-    private router: Router){}
+    private router: Router){this.selectProvider={} as Providers;}
 
   ngOnInit(): void {
       this.getProviders();
+  }
+
+  getMyProvider(id: string) {
+    this.providersService.getMyProvider(id).subscribe(
+      (result: any) => {
+        console.log('Acción realizada con éxito:');
+        this.selectProvider = result.data;
+      },
+      (error) => {
+        console.error('Error al obtener el envío:', error);
+      }
+    );
   }
 
   getProviders(){
@@ -48,6 +61,21 @@ export class ProveedoresComponent implements OnInit {
         console.error(error);
       }
     )
+  }
+  
+
+  updateProvider() {
+    this.providersService.putProvider(this.selectProvider.id, this.selectProvider).subscribe(
+      (result: any) => {
+        console.log('Acción realizada con éxito:');
+        // Actualiza la lista de shippers para reflejar los cambios
+        this.getProviders();
+        location.reload()
+      },
+      (error) => {
+        console.error('Error al actualizar el envío:', error);
+      }
+    );
   }
   
 }

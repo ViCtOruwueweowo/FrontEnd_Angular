@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { Orders } from '../core/interfaces/orders';
 import { OrdersService } from '../core/service/orders.service';
 import { NgFor } from '@angular/common';
+import { Ordersd } from '../core/interfaces/ordersd';
 
 @Component({
   selector: 'app-ordenes',
@@ -14,11 +15,13 @@ import { NgFor } from '@angular/common';
 })
 export class OrdenesComponent {
 orderList:Orders[]=[];
+orderdList:Ordersd[]=[];
 
 constructor(private ordersService:OrdersService){}
 
 ngOnInit():void{
   this.getorder();
+  this.getorderd();
 }
 
 getorder() {
@@ -32,4 +35,14 @@ getorder() {
   });
 }
 
+getorderd() {
+  this.ordersService.getorderd().subscribe({
+    next: (result) => {
+      this.orderdList = result[0];
+    },
+    error: (error) => {
+      console.error('Error fetching orders:', error);
+    }
+  });
+}
 }

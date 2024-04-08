@@ -10,6 +10,7 @@ export const routes: Routes = [
     {path:'Games',loadComponent:()=>import('../app/juegos/juegos.component').then(c=>c.JuegosComponent), canActivate: [authGuard]},
     {path:'FGames',loadComponent:()=>import('../app/form-registro-juego/form-registro-juego.component').then(c=>c.FormRegistroJuegoComponent), canActivate: [authGuard]},
     {path:'Platform',loadComponent:()=>import('../app/plataformas/plataformas.component').then(c=>c.PlataformasComponent), canActivate: [authGuard]},
+    {path:'FGamePlat',loadComponent:()=>import('../app/form-registro-juegoplat/form-registro-juegoplat.component').then(c=>c.FormRegistroJuegoplatComponent), canActivate: [authGuard]},
     {path:'Transport',loadComponent:()=>import('../app/transporte/transporte.component').then(c=>c.TransporteComponent), canActivate: [authGuard]},
     {path:'FTransport',loadComponent:()=>import('../app/form-registro-transporte/form-registro-transporte.component').then(c=>c.FormRegistroTransporteComponent), canActivate: [authGuard]},
     {path:'Provider',loadComponent:()=>import('../app/proveedores/proveedores.component').then(c=>c.ProveedoresComponent), canActivate: [authGuard]},

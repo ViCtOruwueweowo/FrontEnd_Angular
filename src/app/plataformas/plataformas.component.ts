@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { Platforms } from '../core/interfaces/platforms';
 import { PlatformsService } from '../core/service/platforms.service';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-plataformas',
   standalone: true,
-  imports: [NavbarComponent,NgFor],
+  imports: [NavbarComponent,NgFor,RouterLink,NgIf],
   templateUrl: './plataformas.component.html',
   styleUrl: './plataformas.component.css'
 })

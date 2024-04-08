@@ -21,14 +21,19 @@ export class ProvidersService {
     return this.httpClient.get(this.API_URL).pipe(res=>res)
   }
 
+  getMyProvider(id:string){
+    return this.httpClient.get( `${this.API_URL}/${id}`)
+  }
+  
+  public putProvider(id: string, body: any){
+    return this.httpClient.put(
+      `${this.API_URL}/${id}`, body
+    );
+}
+
+
   public deleteProvider(id: string){
     return this.httpClient.delete(
-      `${this.API_URL}/${id}`
-    );
-  }
-
-  public updateProvider(id: string){
-    return this.httpClient.get(
       `${this.API_URL}/${id}`
     );
   }
