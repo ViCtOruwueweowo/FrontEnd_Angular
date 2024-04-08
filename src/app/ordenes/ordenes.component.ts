@@ -3,25 +3,53 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { RouterLink } from '@angular/router';
 import { Orders } from '../core/interfaces/orders';
 import { OrdersService } from '../core/service/orders.service';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Ordersd } from '../core/interfaces/ordersd';
+import { Games } from '../core/interfaces/games';
+import { GamesService } from '../core/service/games.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-ordenes',
   standalone: true,
-  imports: [NavbarComponent, RouterLink,NgFor],
+  imports: [NavbarComponent, RouterLink,NgFor,FormsModule,ReactiveFormsModule,NgIf],
   templateUrl: './ordenes.component.html',
   styleUrl: './ordenes.component.css'
 })
 export class OrdenesComponent {
+
+  public orders:Orders={
+    user_name:'',
+    shipper_name:'',
+    state:'',
+    state_id:'',
+    user_id:'',
+    shipper_id:'',
+  }
+
 orderList:Orders[]=[];
 orderdList:Ordersd[]=[];
+gamesList:Games[]=[];
 
-constructor(private ordersService:OrdersService){}
+constructor(
+  private gamesService:GamesService,
+  private ordersService:OrdersService){}
 
 ngOnInit():void{
+  this.getgame();
   this.getorder();
   this.getorderd();
+}
+
+getgame() {
+  this.gamesService.getgame().subscribe({
+    next: (result) => {
+      this.gamesList = result.data;
+    },
+    error: (err) => {
+      console.log(err);
+    }
+  });
 }
 
 getorder() {
@@ -38,11 +66,19 @@ getorder() {
 getorderd() {
   this.ordersService.getorderd().subscribe({
     next: (result) => {
-      this.orderdList = result[0];
+      this.orderdList = result; // Asigna los datos de la respuesta a 'this.orderdList'
     },
     error: (error) => {
       console.error('Error fetching orders:', error);
     }
   });
+}
+
+public createOrder(){
+  this.ordersService.createOrder(this.orders).subscribe(
+    (response)=>{
+      
+    }
+  )
 }
 }

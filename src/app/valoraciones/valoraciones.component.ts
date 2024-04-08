@@ -1,21 +1,25 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Valorations } from '../core/interfaces/valorations';
 import { ValorationsService } from '../core/service/valorations.service';
 import { RouterLink } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-valoraciones',
   standalone: true,
-  imports: [NavbarComponent,NgFor,RouterLink],
+  imports: [NavbarComponent,NgFor,RouterLink,NgIf,FormsModule,ReactiveFormsModule],
   templateUrl: './valoraciones.component.html',
   styleUrl: './valoraciones.component.css'
 })
 export class ValoracionesComponent {
 valorationList:Valorations[]=[]
 
-constructor(private valorationsService:ValorationsService){}
+constructor(private valorationsService:ValorationsService)
+{this.selectedValoration={} as Valorations}
+
+selectedValoration:Valorations;
 
 ngOnInit():void{
   this.getValorations();

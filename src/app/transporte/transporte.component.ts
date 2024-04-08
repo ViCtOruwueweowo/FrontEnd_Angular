@@ -13,6 +13,10 @@ import { NgIf } from '@angular/common';
   styleUrl: './transporte.component.css'
 })
 export class TransporteComponent implements OnInit{
+
+
+
+
 shippersList: Shippers[]=[];
 
 
@@ -21,9 +25,10 @@ constructor(
   private shippersService:ShippersService)
   {this.selectedShipper = {} as Shippers;}
 
-ngOnInit(): void {
+  ngOnInit(): void {
     this.getShippers();
-}
+  }
+
 
 selectedShipper: Shippers;
 

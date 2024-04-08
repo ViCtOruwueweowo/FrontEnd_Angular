@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Valorations } from '../core/interfaces/valorations';
 import { Users } from '../core/interfaces/users';
 import { Games } from '../core/interfaces/games';
@@ -9,6 +9,7 @@ import { GamesService } from '../core/service/games.service';
 import { UsersService } from '../core/service/users.service';
 import { ValorationsService } from '../core/service/valorations.service';
 import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-form-registro-valoracion',
@@ -18,27 +19,36 @@ import { Router } from '@angular/router';
   styleUrl: './form-registro-valoracion.component.css'
 })
 export class FormRegistroValoracionComponent {
+  form!: FormGroup;
 
   constructor(
     private formBuilder:FormBuilder,
     private gamesService:GamesService,
     private usersService: UsersService,
     private valorationsService:ValorationsService,
-    private router:Router
+    private router:Router,
+    private http:HttpClient
   ){}
 
   public valorations:Valorations={
     user_name:'',
     videogame_name:'',
     estrellas:'',
+    user_id:'',
+    videogame_id:'',
   }
 
-  usersList:Users[]=[];
+  token!: string;
   gamesList:Games[]=[];
 
 ngOnInit():void{
   this.getgames();
-  this.getusers();
+
+  this.token = localStorage.getItem('token') || '';
+  this.form = this.formBuilder.group({
+    videogame_id: ['', Validators.required],
+    estrellas: ['', Validators.required]
+  });
 }
 
 getgames() {
@@ -50,16 +60,18 @@ getgames() {
       console.log(err);
     }
   });
+
 }
 
-getusers() {
-  this.usersService.getUser().subscribe({
-    next: (result) => {
-      this.usersList = result.data;
+
+public createValoration() {
+  this.valorationsService.createvaloration(this.valorations).subscribe(
+    (response) => {
+      this.router.navigate(['/Valorations']);
     },
-    error: (err) => {
-      console.log(err);
+    (error) => {
+      console.error('Error al crear la valoración:', error);
     }
-  });
+  );
 }
 }

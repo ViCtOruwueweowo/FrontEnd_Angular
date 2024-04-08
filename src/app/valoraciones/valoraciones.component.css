@@ -1,0 +1,10 @@
+label{ color:grey;
+    font-size: xx-large;}
+    input[type = "radio"]{ display:none;}
+    .clasificacion{
+        direction: rtl;/* right to center */
+        unicode-bidi: bidi-override;/* bidi de bidireccional */
+    }
+    label:hover{color:rgb(255, 225, 0);
+    font-size: xx-large;}
+    input[type = "radio"]:checked ~ label{color:rgb(246, 255, 0);}

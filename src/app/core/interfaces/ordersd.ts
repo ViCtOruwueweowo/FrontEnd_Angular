@@ -3,5 +3,6 @@ export interface Ordersd {
     order_id:string,
     videogame_id:string,
     quantity:string,
-    totalPrice:string
+    totalPrice:string,
+    videogame_name:string,
 }
