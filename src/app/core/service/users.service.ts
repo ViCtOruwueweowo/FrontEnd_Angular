@@ -21,4 +21,10 @@ export class UsersService {
   public getUser(): Observable<any> {
     return this.httpClient.get(this.API_URL).pipe(res => res);
   }
+
+  public getNav(id: string, body: any){
+    return this.httpClient.put(
+      `${this.API_URL}/${id}`, body
+    );
+  }
 }

@@ -5,4 +5,5 @@ export interface Orders {
     state_id:string,
     user_id:string,
     shipper_id:string,
+    id:string,
 }
