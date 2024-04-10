@@ -25,4 +25,6 @@ export const routes: Routes = [
     {path:'GamePro',loadComponent:()=>import('../app/juego-proveedor/juego-proveedor.component').then(c=>c.JuegoProveedorComponent), canActivate: [authGuard]},
     {path:'FGamePro',loadComponent:()=>import('../app/form-registro-juegop/form-registro-juegop.component').then(c=>c.FormRegistroJuegopComponent), canActivate: [authGuard]},
     {path:'OrderDetail',loadComponent:()=>import('../app/orden-detalle/orden-detalle.component').then(c=>c.OrdenDetalleComponent), canActivate: [authGuard]},
+    {path:'Code',loadComponent:()=>import('../app/code/code.component').then(c=>c.CodeComponent), canActivate: [authGuard]},
+
 ];

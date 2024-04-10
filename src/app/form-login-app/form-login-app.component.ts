@@ -72,7 +72,7 @@ public logeo() {
       // Almacena el token en localStorage
       localStorage.setItem('token', token);
       // Redirige al usuario a la página de usuarios
-      this.router.navigate(['/Users']);
+      this.router.navigate(['/Code']);
     },
     (error) => {
       console.error('Error al iniciar sesiónes:', error);

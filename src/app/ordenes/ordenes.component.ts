@@ -43,7 +43,6 @@ ngOnInit():void{
   this.getorderd();
   this.orders.state_id = '1'; 
   this.orders.shipper_id = '1';
-  this.orders.user_id = '1'; 
 }
 
 getgame() {

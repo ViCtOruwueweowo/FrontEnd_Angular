@@ -7,7 +7,6 @@ import { NgFor, NgIf } from '@angular/common';
 import { Users } from '../core/interfaces/users';
 import { UsersService } from '../core/service/users.service';
 
-
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -23,11 +22,11 @@ export class NavbarComponent {
     isActive: '',
   }
 
-  public user: Users = {
-    
+  public user: Users = {  
     role_id: '',
     name: '',
     email: '',
+    role:'',
     password: ''
   }
 
@@ -42,7 +41,6 @@ export class NavbarComponent {
     });
   }
   
-
   constructor(
     private userService:UsersService,
     private loginService: LoginService,
@@ -53,7 +51,5 @@ export class NavbarComponent {
     localStorage.removeItem('token');
     this.router.navigate(['/']);
   }
-
-
 
 }

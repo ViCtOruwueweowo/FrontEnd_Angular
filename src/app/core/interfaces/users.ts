@@ -3,4 +3,5 @@ export interface Users {
     email:string;
     password:string;
     role_id:string;
+    role:string;
 }

@@ -12,7 +12,7 @@
     </header>
     <div class="nav-scroller py-1 mb-2">
       <nav  class="nav d-flex justify-content-between" style="font-family: 'Times New Roman', Times, serif;">
-        <a  class="p-2 link-dark link-offset-2  " routerLink="/Users" *ngIf="user?.role_id != '1'">Usuarios</a>        
+        <a  class="p-2 link-dark link-offset-2  " routerLink="/Users" *ngIf="user.role == 'Admin' ">Usuarios</a>        
         <a  class="p-2 link-dark link-offset-2 " routerLink="/Provider">Proveedores</a>
         <a  class="p-2 link-dark link-offset-2 " routerLink="/Transport">Transporte</a>
         <a class="p-2 link-dark link-offset-2 " routerLink="/Games">Videojuegos</a>
@@ -21,7 +21,7 @@
         <a class="p-2 link-dark link-offset-2 " routerLink="/Valorations">Valoraciones</a>
         <a class="p-2 link-dark link-offset-2 " routerLink="/Orders">Ordenes</a>
         <a class="p-2 link-dark link-offset-2 " routerLink="/Details">Detalles</a>
-        <a class="p-2 link-dark link-offset-2 " routerLink="/Auth">Verificar</a>
+  
         <a class="p-2 link-dark link-offset-2 " data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
@@ -34,7 +34,35 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body" >
-            <p class="text-center">Aplicacion Creada Como Practica De La Materia Del Profesor Igmar Salazar.</p>
+            <div class="Administrador">
+              <div class="mb-3">
+                <h6 class="text-end">Generar Mensaje.</h6>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <br>
+                <div class="d-grid gap-2">
+                  <button class="btn btn-primary" type="button">Enviar Mensaje.</button>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="empleado">
+              <h6 class="text-start">Mis Mensajes</h6>
+              <button type="button" class="btn btn-primary" id="liveToastBtn">Consultar Mis Mensajes</button>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="..." class="rounded me-2" alt="...">
+      <strong class="me-auto">Bootstrap</strong>
+      <small>11 mins ago</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+  </div>
+</div>
+            </div>
             <div class="d-grid gap-2 ">
             <a class="p-2 link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover btn btn-danger " (click)="logout()">Cerrar</a>
           </div>

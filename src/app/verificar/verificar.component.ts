@@ -8,7 +8,7 @@ import { LoginService } from '../core/service/login.service';
 @Component({
   selector: 'app-verificar',
   standalone: true,
-  imports: [NavbarComponent, NgIf,FormsModule,ReactiveFormsModule],
+  imports: [NavbarComponent, NgIf,FormsModule,ReactiveFormsModule,RouterLink],
   templateUrl: './verificar.component.html',
   styleUrl: './verificar.component.css'
 })

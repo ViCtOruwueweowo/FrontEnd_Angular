@@ -47,6 +47,7 @@ export class FormRegistroAppComponent {
 
   public user: Users = {
     name: '',
+    role:'',
     email: '',
     password: '',
     role_id:'',
