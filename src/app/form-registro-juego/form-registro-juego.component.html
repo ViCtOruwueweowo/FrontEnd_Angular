@@ -27,6 +27,8 @@
             <select class="form-select" formControlName="genre_id" aria-label="Default select example" [(ngModel)]="games.genre_id">
                 <option *ngFor="let item of gendersList; let i = index" value="{{item.id}}">{{item.name}}</option>
             </select>
+
+            
             <label for="floatingInput">Genero</label>
             <div *ngIf="genre_id.invalid && (genre_id.dirty || genre_id.touched)" class="text-danger" role="alert">
                 <div class="alert-danger" *ngIf="genre_id.errors?.['required']">

@@ -1,1 +1,24 @@
 <app-navbar></app-navbar>
+
+<div class="container">
+    <form [formGroup]="formgamep">
+
+        <div class="form-floating mb-3">
+            <select class="form-select" formControlName="provider_id" aria-label="Default select example" [(ngModel)]="gamesp.provider_id">
+                <option *ngFor="let item of providersList; let i = index" value="{{item.id}}" >{{item.nombre}}</option>
+            </select>
+            <label for="floatingInput">Proveedor</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <select class="form-select" formControlName="videogame_id" aria-label="Default select example" [(ngModel)]="gamesp.videogame_id">
+                <option *ngFor="let item of gamesList; let i = index" value="{{item.id}}">{{item.nombre}}</option>
+            </select>
+            <label for="floatingInput">Videojuego</label>
+        </div>
+
+        <div class="d-grid gap-2 text-center">
+            <button class="btn btn-success btn-lg" type="submit" (click)="createGamesP()">Guardar Cambios</button>
+        </div>
+    </form>
+</div>

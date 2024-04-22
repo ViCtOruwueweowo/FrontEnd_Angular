@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { NgFor, NgIf } from '@angular/common';
 import { Valorations } from '../core/interfaces/valorations';
 import { ValorationsService } from '../core/service/valorations.service';
 import { RouterLink } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-valoraciones',
@@ -13,28 +13,55 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   templateUrl: './valoraciones.component.html',
   styleUrl: './valoraciones.component.css'
 })
-export class ValoracionesComponent {
-valorationList:Valorations[]=[]
+export class ValoracionesComponent implements OnInit {
 
-constructor(private valorationsService:ValorationsService)
-{this.selectedValoration={} as Valorations}
+  valorationList: Valorations[] = []
+  valorationsForm = new FormGroup({
+    estrellas: new FormControl()
+  });
+  selectedValoration: Valorations;
 
-selectedValoration:Valorations;
+  constructor(private valorationsService: ValorationsService) {
+    this.selectedValoration = {} as Valorations
+  }
 
-ngOnInit():void{
-  this.getValorations();
-}
+  ngOnInit(): void {
+    this.getValorations();
+  }
 
-getValorations(): void {
-  this.valorationsService.getValoration().subscribe(
-    (result) => {
-      // Maneja la respuesta exitosa aquí
-      this.valorationList = result.data; // Asigna los datos a la lista de valoraciones
-    },
-    (err) => {
-      // Maneja el error aquí (por ejemplo, muestra un mensaje de error)
-      console.error('Error al obtener las valoraciones:', err);
-    }
-  );
-}
+  getValorations(): void {
+    this.valorationsService.getValoration().subscribe(
+      (result) => {
+        this.valorationList = result.data;
+      },
+      (err) => {
+        console.error('Error al obtener las valoraciones:', err);
+      }
+    );
+  }
+
+  getMyValoration(id: string) {
+    this.valorationsService.getMyValoration(id).subscribe(
+      (result: any) => {
+        console.log('Acción realizada con éxito:');
+        this.selectedValoration = result.data;
+      },
+      (error) => {
+        console.error('Error al obtener el envío:', error);
+      }
+    );
+  }
+
+  updateValo() {
+    this.valorationsService.putValoration(this.selectedValoration.id, this.selectedValoration).subscribe(
+      (result: any) => {
+        console.log('Acción realizada con éxito:');
+        this.getValorations();
+        location.reload()
+      },
+      (error) => {
+        console.error('Error al actualizar el envío:', error);
+      }
+    );
+  }
 }

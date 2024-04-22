@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { GamesService } from '../core/service/games.service';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { Games } from '../core/interfaces/games';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Genders } from '../core/interfaces/genders';
 import { GendersService } from '../core/service/genders.service';
 @Component({
   selector: 'app-generos',
   standalone: true,
-  imports: [NavbarComponent, NgFor],
+  imports: [NavbarComponent, NgFor, NgIf],
   templateUrl: './generos.component.html',
   styleUrl: './generos.component.css'
 })

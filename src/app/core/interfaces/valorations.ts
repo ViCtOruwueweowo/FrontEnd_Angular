@@ -1,4 +1,5 @@
 export interface Valorations {
+    id:string;
     user_name:string;
     videogame_name:string;
     estrellas:string;

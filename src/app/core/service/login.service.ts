@@ -15,7 +15,8 @@ export class LoginService {
 
   public logeo(login:Logins): Observable<LoginResponse>{
     return this.httpClient.post<LoginResponse>(
-      'http://127.0.0.1:8000/api/User/login',login,
+      'http://127.0.0.1:8000/api/User/login',
+      login
     );
   } 
 

@@ -31,6 +31,7 @@ export class FormRegistroValoracionComponent {
   ){}
 
   public valorations:Valorations={
+    id:'',
     user_name:'',
     videogame_name:'',
     estrellas:'',

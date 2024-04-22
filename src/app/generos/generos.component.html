@@ -1,19 +1,23 @@
 <app-navbar></app-navbar>
 <br>
-<div class="container" >
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
-
-
+<div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 g-3">
         <div class="col" *ngFor="let item of gendersList; let i = index">
-            <div class="card shadow-sm">
-                <div class="card-body text-center">
-           <p>{{ item.name }}</p>
-           <img style="height: 10px; width: 340px;" src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" alt="">
-           <p>{{item.description}}</p>
-
-
-           
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <img class="img-fluid rounded-start" *ngIf="item.name === 'FPS'" src="https://imgs.search.brave.com/lcywGHry_8WzsogTvvGuLVSBx1TPkIHDunSHhl6okuM/rs:fit:860:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvaGQvaGFs/by1waWN0dXJlcy01/Mm85MXF6MmZ6OWMz/MHFxLmpwZw" alt="Imagen de FPS">
+                        <img class="img-fluid rounded-start" *ngIf="item.name === 'Accion'" src="https://image.api.playstation.com/vulcan/ap/rnd/202305/0118/673d9659123ab90a2b26b175009b3e9d04afcbfc599ebbbf.jpg" alt="Imagen de acción">
+                        <img class="img-fluid rounded-start" *ngIf="item.name === 'Suspenso'" src="https://media.vandal.net/m/6-2020/202061011354470_1.jpg" alt="Imagen de suspenso">
+                        <img class="img-fluid rounded-start" *ngIf="item.name === 'Multiplayer'" src="https://i.blogs.es/82ab42/guilty-gear--strive-_20210607224628/1366_2000.jpeg" alt="Imagen de multiplayer">
+                        <img class="img-fluid rounded-start" *ngIf="item.name === 'Terror'" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE_gj3sY9XpZmV1VylpOldeui7R85VH-UPxcGGF1WvW5Z3fFRpbDLoMebsHOYwL0_efOc&usqp=CAU" alt="Imagen de terror">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.name }}</h5>
+                            <p class="card-text">{{item.description}}.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
